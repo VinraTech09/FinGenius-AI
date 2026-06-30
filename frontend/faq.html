@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinGenius AI - FAQ</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <!-- Floating Particles -->
+  <div class="particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">FinGenius AI</div>
+      <ul class="sidebar-nav">
+        <li><a href="dashboard.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          Dashboard
+        </a></li>
+        <li><a href="transactions.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          Transactions
+        </a></li>
+        <li><a href="chatbot.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          AI Chatbot
+        </a></li>
+        <li><a href="community.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          Community
+        </a></li>
+        <li><a href="profile.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          Profile
+        </a></li>
+        <li><a href="subscription.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+          Subscription
+        </a></li>
+        <li><a href="about.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          About
+        </a></li>
+        <li><a href="contact.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          Contact
+        </a></li>
+        <li><a href="help.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          Help
+        </a></li>
+        <li><a href="faq.html" class="active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          FAQ
+        </a></li>
+        <li><a href="#" id="logoutBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          Logout
+        </a></li>
+      </ul>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="page-header">
+        <h1 class="page-title">Frequently Asked Questions</h1>
+      </div>
+      
+      <div class="page-content faq-container">
+        <div class="content-card">
+          <!-- FAQ Search -->
+          <div class="faq-search">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="faqSearch" placeholder="Search for answers...">
+          </div>
+          
+          <!-- Getting Started -->
+          <div class="faq-category">
+            <h3 class="faq-category-title">🚀 Getting Started</h3>
+            
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>What is FinGenius AI?</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+              <div class="faq-answer">
+                <p>FinGenius AI is an AI-powered financial management platform that helps you track expenses, analyze spending patterns, and get personalized financial insights using advanced machine learning algorithms. It provides features like health scoring, fraud detection, and smart predictions.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>How do I create an account?</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+              <div class="faq-answer">
+                <p>Click on the "Sign Up" button on the login page. Fill in your name, email address, and create a password. That's it! You can start using FinGenius AI immediately after registration.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Is FinGenius AI free to use?</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+              <div class="faq-answer">
+                <p>Yes! We offer a free plan with basic features. You can upgrade to Pro (₹299/month) or Premium (₹599/month) for advanced AI insights, fraud detection, and detailed predictions.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>How do I add my first transaction?</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+              <div class="faq-answer">
+                <p>On your dashboard, click the "+ Add Income" or "+ Add Expense" buttons. Select the category, enter the amount, add a description (optional), and set the date. Your transaction will be instantly added!</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Account & Security -->
+          <div class="faq-category">
+            <h3 class="faq-category-title">🔐 Account & Security</h3>
+            
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Is my data secure?</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+              <div class="faq-answer">
+                <p>Absolutely! We use industry-standard encryption (AES-256) and secure server infrastructure. Your financial data is stored securely and never shared with third parties without your consent.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>How do I reset my password?</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+              <div class="faq-answer">
+                <p>Click "Forgot Password" on the login page. Enter your registered email, and we'll send you a password reset link. Follow the instructions to create a new password.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Can I delete my account?</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+              <div class="faq-answer">
+                <p>Yes, you can delete your account at any time. Go to Profile > Settings > Delete Account. Note that this action is irreversible and all your data will be permanently removed.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>How does two-factor authentication work?</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+              <div class="faq-answer">
+                <p>Two-factor authentication adds an extra layer of security. When enabled, you'll need to enter a verification code sent to your email or phone number along with your password when logging in.</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- AI Features -->
+          <div class="faq-category">
+            <h3 class="faq-category-title">🤖 AI Features</h3>
+            
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>How does the AI Health Score work?</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+              <div class="faq-answer">
+                <p>Our AI analyzes your income, expenses, savings ratio, and spending patterns to calculate a health score from 0-100. Scores above 70 are considered excellent, 50-70 are stable, 25-50 need attention, and below 25 are critical.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>How accurate are the predictions?</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+              <div class="faq-answer">
+                <p>The predictions improve as you add more transactions. With at least 3 months of data, the predictions become more reliable (typically 70-85% accurate). The accuracy percentage is shown on your dashboard.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>How does fraud detection work?</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+              <div class="faq-answer">
+                <p>Our AI monitors your spending patterns and flags any unusual transactions. If an expense doesn't match your typical behavior (like an unusually large amount or transactions in different locations), you'll receive an instant alert.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>What can I ask the AI Chatbot?</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+              <div class="faq-answer">
+                <p>You can ask the chatbot about: purchase suggestions ("Can I buy a 50000 phone?"), savings advice, expense analysis, income overview, budget recommendations, and general financial tips. The AI considers your financial situation for personalized advice.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>How does the AI Companion help me?</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+              <div class="faq-answer">
+                <p>The AI Companion is a floating assistant that appears on all pages. It provides contextual tips based on what you're doing - like suggesting savings tips when viewing expenses or offering quick actions for common tasks.</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Billing & Subscription -->
+          <div class="faq-category">
+            <h3 class="faq-category-title">💳 Billing & Subscription</h3>
+            
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>What subscription plans do you offer?</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+              <div class="faq-answer">
+                <p>We offer three plans:<br>
+                • <strong>Free:</strong> Basic expense tracking, manual entries<br>
+                • <strong>Pro (₹299/month):</strong> Fraud detection, predictions, AI chatbot<br>
+                • <strong>Premium (₹599/month):</strong> Advanced AI insights, priority support, export features</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Can I upgrade or downgrade my plan?</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+              <div class="faq-answer">
+                <p>Yes! Go to Subscription page and select your desired plan. Changes take effect immediately, and we'll prorate any charges. You can change your plan anytime.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>How do I export my data?</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+              <div class="faq-answer">
+                <p>Click the "Download Data" button on your dashboard to export all your transactions as a CSV file. Premium users can also export in PDF format with detailed reports.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>What payment methods do you accept?</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+              <div class="faq-answer">
+                <p>We accept all major credit/debit cards (Visa, MasterCard, RuPay), UPI, Net Banking, and popular digital wallets (Paytm, Google Pay, PhonePe).</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Troubleshooting -->
+          <div class="faq-category">
+            <h3 class="faq-category-title">🔧 Troubleshooting</h3>
+            
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Why is my health score not updating?</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+              <div class="faq-answer">
+                <p>The health score updates after each new transaction. If you've added transactions but the score hasn't changed, try refreshing the page. Make sure you have at least one income and one expense recorded.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Why aren't the predictions showing?</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+              <div class="faq-answer">
+                <p>Predictions require at least 2-3 months of transaction data. Keep adding your income and expenses regularly. The more data you provide, the more accurate the predictions become.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>The app is running slowly. What should I do?</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+              <div class="faq-answer">
+                <p>Try these steps: 1) Clear your browser cache and cookies, 2) Use a modern browser (Chrome, Firefox, Edge), 3) Check your internet connection, 4) Disable browser extensions temporarily.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>How do I contact support?</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+              <div class="faq-answer">
+                <p>You can reach us through: 1) The Contact page on our website, 2) Email: support@fingenius.ai, 3) Live chat (available 9 AM - 9 PM IST), 4) Premium users get priority 24/7 support.</p>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </main>
+  </div>
+  
+  <script src="js/app.js"></script>
+  <script>
+    // FAQ Toggle with Animation
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const item = question.parentElement;
+        item.classList.toggle('active');
+        
+        // Close other FAQs in the same category
+        const siblings = item.parentElement.querySelectorAll('.faq-item');
+        siblings.forEach(sibling => {
+          if (sibling !== item && sibling.classList.contains('active')) {
+            sibling.classList.remove('active');
+          }
+        });
+      });
+    });
+    
+    // FAQ Search Functionality
+    const faqSearch = document.getElementById('faqSearch');
+    if (faqSearch) {
+      faqSearch.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+          const question = item.querySelector('.faq-question span').textContent.toLowerCase();
+          const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+          
+          if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    }
+    
+    // Logout
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      fingenius.logout();
+    });
+  </script>
+</body>
+</html>

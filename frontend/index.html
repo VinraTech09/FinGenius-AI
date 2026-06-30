@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinGenius AI - Login</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-card">
+      <div class="auth-header">
+        <div class="auth-logo">FinGenius AI</div>
+        <p class="auth-subtitle">AI-Powered Financial Management</p>
+      </div>
+      
+      <!-- Login Form -->
+      <form id="loginForm">
+        <div class="form-group">
+          <label class="form-label" for="email">Email Address</label>
+          <input type="email" id="email" class="form-input" placeholder="Enter your email" required>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="password">Password</label>
+          <input type="password" id="password" class="form-input" placeholder="Enter your password" required>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Sign In</button>
+      </form>
+      
+      <p class="text-center mt-2" style="color: var(--text-secondary);">
+        Don't have an account? <a href="register.html">Sign Up</a>
+      </p>
+      
+      <div class="text-center mt-3">
+        <a href="about.html" style="color: var(--text-muted); font-size: 0.875rem;">Learn more about FinGenius AI</a>
+      </div>
+    </div>
+  </div>
+  <script src="js/axios.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

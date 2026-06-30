@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinGenius AI - Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">FinGenius AI</div>
+      <ul class="sidebar-nav">
+        <li><a href="dashboard.html" class="active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          Dashboard
+        </a></li>
+        <li><a href="transactions.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          Transactions
+        </a></li>
+        <li><a href="chatbot.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          AI Chatbot
+        </a></li>
+        <li><a href="profile.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          Profile
+        </a></li>
+        <li><a href="subscription.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+          Subscription
+        </a></li>
+        <li><a href="about.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          About
+        </a></li>
+        <li><a href="contact.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          Contact
+        </a></li>
+        <li><a href="help.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          Help
+        </a></li>
+        <li><a href="#" id="logoutBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          Logout
+        </a></li>
+      </ul>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="page-header">
+        <h1 class="page-title">Financial Dashboard</h1>
+        <button class="btn btn-primary" id="exportBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Download Data
+        </button>
+      </div>
+      
+      <!-- Alert Mode -->
+      <div id="alertMode"></div>
+      
+      <!-- Stats Cards -->
+      <div class="stats-grid">
+        <div class="stat-card success">
+          <div class="stat-label">Total Income</div>
+          <div class="stat-value income" id="totalIncome">₹0</div>
+        </div>
+        <div class="stat-card danger">
+          <div class="stat-label">Total Expenses</div>
+          <div class="stat-value expense" id="totalExpenses">₹0</div>
+        </div>
+        <div class="stat-card info">
+          <div class="stat-label">Current Balance</div>
+          <div class="stat-value" id="currentBalance">₹0</div>
+        </div>
+        <div class="stat-card warning">
+          <div class="stat-label">Health Score</div>
+          <div class="stat-value" id="healthScoreDisplay">--</div>
+        </div>
+      </div>
+      
+      <!-- Action Buttons -->
+      <div class="flex gap-2 mb-3">
+        <button class="btn btn-success" id="addIncomeBtn">+ Add Income</button>
+        <button class="btn btn-danger" id="addExpenseBtn">+ Add Expense</button>
+      </div>
+      
+      <!-- AI Cards -->
+      <div class="charts-grid">
+        <!-- Health Score Card -->
+        <div class="ai-card">
+          <div class="ai-card-header">
+            <h3 class="ai-card-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              AI Financial Health Score
+            </h3>
+          </div>
+          <div class="ai-score">
+            <div class="score-circle stable" id="healthScoreCircle">
+              <span class="score-value" id="healthScoreValue">--</span>
+            </div>
+            <div>
+              <div style="font-weight: 600; font-size: 1.1rem;" id="healthScoreStatus">--</div>
+              <p style="font-size: 0.875rem;" id="healthScoreRecommendation">--</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Prediction Card -->
+        <div class="ai-card">
+          <div class="ai-card-header">
+            <h3 class="ai-card-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+              AI Future Prediction
+            </h3>
+            <span style="color: var(--text-muted); font-size: 0.8rem;">Next 3 Months</span>
+          </div>
+          <div id="predictionContent">
+            <p class="text-muted">Add more transactions to get predictions</p>
+          </div>
+          <div class="flex flex-between mt-2">
+            <span style="color: var(--text-muted);">Risk Probability:</span>
+            <span id="riskProbability" style="font-weight: 600;">--</span>
+          </div>
+        </div>
+        
+        <!-- Fraud Alerts Card -->
+        <div class="ai-card">
+          <div class="ai-card-header">
+            <h3 class="ai-card-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+              Fraud Detection
+            </h3>
+          </div>
+          <div id="fraudAlerts">
+            <p class="text-muted">No fraud detected</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Charts -->
+      <div class="charts-grid">
+        <div class="chart-card">
+          <h3 class="chart-title">Expense Trend</h3>
+          <canvas id="trendChart"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3 class="chart-title">Income vs Expenses</h3>
+          <canvas id="barChart"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3 class="chart-title">Category Breakdown</h3>
+          <canvas id="pieChart"></canvas>
+        </div>
+      </div>
+      
+      <!-- Recent Transactions -->
+      <div class="chart-card">
+        <h3 class="chart-title">Recent Transactions</h3>
+        <div class="transaction-list" id="transactionsList">
+          <div class="loading-container"><div class="spinner"></div></div>
+        </div>
+      </div>
+    </main>
+  </div>
+  
+  <!-- Add Income Modal -->
+  <div class="modal-overlay" id="incomeModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title">Add Income</h3>
+        <button class="modal-close">&times;</button>
+      </div>
+      <form id="incomeForm">
+        <div class="form-group">
+          <label class="form-label">Category</label>
+          <select id="incomeCategory" class="form-select" required>
+            <option value="">Select category</option>
+            <option value="Salary">Salary</option>
+            <option value="Freelancing">Freelancing</option>
+            <option value="Investment">Investment</option>
+            <option value="Business">Business</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Amount (₹)</label>
+          <input type="number" id="incomeAmount" class="form-input" placeholder="Enter amount" required min="1">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Description</label>
+          <input type="text" id="incomeDescription" class="form-input" placeholder="Optional description">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Date</label>
+          <input type="date" id="incomeDate" class="form-input">
+        </div>
+        <button type="submit" class="btn btn-success btn-block">Add Income</button>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Add Expense Modal -->
+  <div class="modal-overlay" id="expenseModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title">Add Expense</h3>
+        <button class="modal-close">&times;</button>
+      </div>
+      <form id="expenseForm">
+        <div class="form-group">
+          <label class="form-label">Category</label>
+          <select id="expenseCategory" class="form-select" required>
+            <option value="">Select category</option>
+            <option value="Bills">Bills</option>
+            <option value="Utilities">Utilities</option>
+            <option value="Food">Food</option>
+            <option value="Transport">Transport</option>
+            <option value="EMI">EMI</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Healthcare">Healthcare</option>
+            <option value="Education">Education</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Amount (₹)</label>
+          <input type="number" id="expenseAmount" class="form-input" placeholder="Enter amount" required min="1">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Description</label>
+          <input type="text" id="expenseDescription" class="form-input" placeholder="Optional description">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Date</label>
+          <input type="date" id="expenseDate" class="form-input">
+        </div>
+        <button type="submit" class="btn btn-danger btn-block">Add Expense</button>
+      </form>
+    </div>
+  </div>
+  
+  <script src="js/app.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
